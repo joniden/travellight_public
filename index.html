@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Travel light</title>
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<script>
+		$(function(){
+
+			function getinfo(){
+
+				//Get the information from the webserver
+				$.get("https://moshpitandcode.com/travellight?page=getinfo",function(result){
+
+					var content;
+
+					//It should only return close or far				
+					if (result == 'close') {
+
+						//Write html, like images or text
+						content = '<img src="" />';
+
+					}else if(result == 'far') {
+
+						//Write html, like images or text
+						content = '<img src="" />';
+
+					}else{
+
+						//Default
+						content = 'Nothing to show';
+					}
+
+					$("#content").html(content);
+
+				});
+			}
+
+			setTimeout(getinfo, 3000);
+		});
+		</script>
+		<div id="content"></div>
+	</body>
+</html>
