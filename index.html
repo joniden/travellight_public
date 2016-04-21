@@ -10,21 +10,24 @@
 
 			function getinfo(){
 
+				var url = "https://moshpitandcode.com/travellight/?page=getinfo"
+
 				//Get the information from the webserver
-				$.get("https://moshpitandcode.com/travellight?page=getinfo",function(result){
+				$.get(url,function(result){
 
 					var content;
+					console.log(result);
 
 					//It should only return close or far				
 					if (result == 'close') {
 
 						//Write html, like images or text
-						content = '<img src="" />';
+						content = 'You are really close now, change me to an image!';
 
 					}else if(result == 'far') {
 
 						//Write html, like images or text
-						content = '<img src="" />';
+						content = 'Come closer and change me to an image!';
 
 					}else{
 
