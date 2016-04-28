@@ -2,6 +2,25 @@
 <html>
 	<head>
 		<title>Travel light</title>
+		<style>
+
+			body,div {
+				margin: 0;
+				padding: 0;
+				overflow:hidden;
+			}
+
+			img {
+				margin: 0 auto;
+				width: 100%;				
+				height: 100%;
+			}
+
+			#content{
+				overflow:hidden;
+			}
+		</style>
+
 		<script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
 	</head>
 	<body>
@@ -24,17 +43,19 @@
 					if (data.status == 'close') {
 
 						//Write html, like images or text
-						content = 'Hi '+data.device+'! You are really close now';
+						content = '<img src="hello.png"/> ';
+						
+						
 
-					}else if(data.status == 'far') {
+					/*}else if(data.status == 'far') {
 
 						//Write html, like images or text
-						content = 'I see you '+data.device+'! Come closer';
+						content = 'I see you '+data.device+'! Come closer';*/
 
 					}else{
 
 						//Default
-						content = 'Nothing to show';
+						content = '<img src="bye.png"/> ';
 					}
 
 
