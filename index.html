@@ -10,6 +10,17 @@
 				overflow:hidden;
 			}
 
+			body{
+				background-color: #1013ed;
+				padding: 30px;
+				font-family: 'Arial', 'Helvetica';
+				font-size: 50px;
+				color: white;
+				text-transform: uppercase;
+				font-weight: bold;
+				line-height: 100%;
+			}
+
 			img {
 				margin: 0 auto;
 				width: 100%;				
@@ -36,26 +47,33 @@
 
 					var content;				
 					var data = result.data;
+					var name;
 
-					console.log(data)
+					console.log(data);
+
+					if(data.device == 'bergen'){
+						name = 'Hyper';
+					}else{
+						name = 'KTH';
+					}
 
 					//It should only return close or far				
 					if (data.status == 'close') {
 
 						//Write html, like images or text
-						content = '<img src="hello.png"/> ';
+						content = 'Hello ' + name;
 						
 						
 
 					}else if(data.status == 'far') {
 
 						///Default
-						content = '<img src="bye.png"/> ';
+						content = 'Good bye ' + name;
 
 					}else{
 
 						//Default
-						content = '<img src="activate.png"/> ';
+						content = 'Activate plz ';
 					}
 
 
