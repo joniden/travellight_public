@@ -14,7 +14,7 @@
 				background-color: #1013ed;
 				padding: 30px;
 				font-family: 'Arial', 'Helvetica';
-				font-size: 50px;
+				font-size: 150px;
 				color: white;
 				text-transform: uppercase;
 				font-weight: bold;
@@ -57,18 +57,20 @@
 						name = 'KTH';
 					}
 
+					name = 'Joacim';
+
 					//It should only return close or far				
 					if (data.status == 'close') {
 
 						//Write html, like images or text
-						content = 'Hello ' + name;
+						content = name + ', you are close now';
 						
 						
 
 					}else if(data.status == 'far') {
 
 						///Default
-						content = 'Good bye ' + name;
+						content = name + ', the signal is weak, come closer';
 
 					}else{
 
