@@ -11,8 +11,6 @@
 			}
 
 			body{
-				background-color: #1013ed;
-				padding: 30px;
 				font-family: 'Arial', 'Helvetica';
 				font-size: 150px;
 				color: white;
@@ -29,7 +27,21 @@
 
 			#content{
 				overflow:hidden;
+				background-size: cover;
+				background-repeat: no-repeat;
+				width: 100vw;
+				height: 100vh;
 			}
+
+			.screen{
+				width: 33.3vw;
+				height: 100vh;
+				float: left;
+				background: #555;
+				background-size: 100% 100%;
+				background-repeat: no-repeat;
+			}
+
 		</style>
 
 		<script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
@@ -47,40 +59,43 @@
 
 					var content;				
 					var data = result.data;
+					var boarding;
+					var wardrobe;
 					var name;
+					var connection;
 
-					console.log(data);
+					console.log(result);
 
-					if(data.device == 'bergen'){
-						name = 'Hyper';
+					if(data.device == 'berlin'){
+						name = 'Joacim';
+						wardrobe = 'wardrobe.png';
+						boarding = 'berlinboarding.png';
+						connection = "berlin_1.png";
 					}else{
-						name = 'KTH';
+						name = 'Håkon';
 					}
 
-					name = 'Joacim';
-
 					//It should only return close or far				
-					if (data.status == 'close') {
+					if (data.status == 'close' || data.status == 'far') {
 
 						//Write html, like images or text
-						content = name + ', you are close now';
-						
-						
+						$(".screen").fadeIn("slow");
+						$("#boarding").css("backgroundImage","url("+boarding+")");
+						$("#wardrobe").css("backgroundImage","url("+wardrobe+")");				
+					}else if(data.status == 'connection') {
 
-					}else if(data.status == 'far') {
-
-						///Default
-						content = name + ', the signal is weak, come closer';
+						$("#content").css("backgroundImage","url("+connection+")");
+						$(".screen").hide();
 
 					}else{
 
 						//Default
-						content = 'Activate plz ';
+						$(".screen").css({
+							"background":"#555"
+						}).show();
 					}
-
-
-
-					$("#content").html(content);
+			
+					//Every 3 second
 					setTimeout(getinfo, 3000);
 				});
 			}
@@ -88,6 +103,10 @@
 			getinfo();
 		});
 		</script>
-		<div id="content"></div>
+		<div id="content">
+			<div id="boarding" class="screen"></div>
+			<div id="mirror" class="screen"></div>
+			<div id="wardrobe" class="screen"></div>
+		</div>
 	</body>
 </html>
