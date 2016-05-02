@@ -27,10 +27,11 @@
 
 			#content{
 				overflow:hidden;
-				background-size: cover;
+				background-size: 100% 100%;
 				background-repeat: no-repeat;
 				width: 100vw;
 				height: 100vh;
+				background: #555;
 			}
 
 			.screen{
@@ -80,8 +81,10 @@
 
 						//Write html, like images or text
 						$(".screen").fadeIn("slow");
-						$("#boarding").css("backgroundImage","url("+boarding+")");
-						$("#wardrobe").css("backgroundImage","url("+wardrobe+")");				
+
+						$("#boarding").html("<img src='"+boarding+"' />");
+						$("#wardrobe").html("<img src='"+wardrobe+"' />");
+
 					}else if(data.status == 'connection') {
 
 						$("#content").css("backgroundImage","url("+connection+")");
@@ -90,7 +93,7 @@
 					}else{
 
 						//Default
-						$(".screen").css({
+						$(".screen").html("").css({
 							"background":"#555"
 						}).show();
 					}
